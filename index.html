@@ -130,6 +130,188 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cs61b-note-Java-Part2-Objects" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/30/cs61b-note-Java-Part2-Objects/">cs61b note (Java Part2 Objects)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/30/cs61b-note-Java-Part2-Objects/" class="archive-article-date">
+  	<time datetime="2020-08-30T21:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Defining-and-Using-Classes"><a href="#Defining-and-Using-Classes" class="headerlink" title="Defining and Using Classes"></a>Defining and Using Classes</h2><h3 id="Static-vs-Non-Static-Methods"><a href="#Static-vs-Non-Static-Methods" class="headerlink" title="Static vs. Non-Static Methods"></a>Static vs. Non-Static Methods</h3><p>All code in Java must be a part of a class.<br>A class that uses another class is sometime called a “client” of that class, i.e <code>DogLauncher</code> is a client of <code>Dog</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public static void makeNoise() &#123;</span><br><span class="line">        System.out.println(&quot;Bark!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class DogLauncher &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Dog.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Instance-Variables-and-Object-Instantiation"><a href="#Instance-Variables-and-Object-Instantiation" class="headerlink" title="Instance Variables and Object Instantiation"></a>Instance Variables and Object Instantiation</h2><p>Not all dogs are alike. Some dogs like to yap incessantly, while others bellow sonorously, bringing joy to all who hear their glorious call. Often, we write programs to mimic features of the universe we inhabit, and Java’s syntax was crafted to easily allow such mimicry.</p>
+<p>As you should have seen in the past, classes can be instantiated, and instances can hold data. This leads to a more natural approach, where we create instances of the Dog class and make the behavior of the Dog methods contingent upon the properties of the specific Dog. To make this more concrete, consider the class below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public int weightInPounds;</span><br><span class="line"></span><br><span class="line">    public void makeNoise() &#123;</span><br><span class="line">        if (weightInPounds &lt; 10) &#123;</span><br><span class="line">            System.out.println(&quot;yipyipyip!&quot;);</span><br><span class="line">        &#125; else if (weightInPounds &lt; 30) &#123;</span><br><span class="line">            System.out.println(&quot;bark. bark.&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;woof!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note: </p>
+<ol>
+<li><code>public int weightInPounds;</code> is an instance variable, no <code>static</code> key word here. The variable can be different for different objects (dogs in this case even there are in the same class).</li>
+<li><code>public void makeNoise()</code> did not have the <code>static</code> keyword. We call such methods <em>instance methods</em> or <em>non-static</em> methods.  </li>
+</ol>
+<p>As an example of using such a Dog, consider:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class DogLauncher &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Dog d;</span><br><span class="line">        d &#x3D; new Dog();</span><br><span class="line">        d.weightInPounds &#x3D; 20;</span><br><span class="line">        d.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>When run, this program will create a Dog with weight 20, and that Dog will soon let out a nice “bark. bark.”.</p>
+<p>Some key oberservations and terminology:</p>
+<ul>
+<li>An <code>Object</code> in Java is an instance of any class.</li>
+<li>The <code>Dog</code> class has its own variables, also known as <em>instance variables</em> or <em>non-static variables</em>. These must be declard inside the class, unlike languages like Python or Matlab, where new variables can be added at runtime.</li>
+<li>The method that we created in the <code>Dog</code> class did not have the <code>static</code> keyword. We call such methods <em>instance methods</em> or <em>non-static methods</em>.</li>
+<li>To call the makeNoise method, we had to first instantiate a Dog using the new keyword, and then make a specific Dog bark. In other words, we called <code>d.makeNoise()</code> instead of <code>Dog.makeNoise()</code>.</li>
+<li>Once an object has been instantiated, it can be assigned to a declared variable of the appropriate type, e.g. <code>d = new Dog();</code></li>
+<li>Variables and methods of a class are also called <em>members</em> of a class.</li>
+<li>Members of a class are accessed using dot notation. </li>
+</ul>
+<h2 id="Constructors-in-Java"><a href="#Constructors-in-Java" class="headerlink" title="Constructors in Java"></a>Constructors in Java</h2><p>As you’ve hopefully seen before, we usually construct objects in object oriented languages using a constructor:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class DogLauncher &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Dog d &#x3D; new Dog(20);</span><br><span class="line">        d.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here, the instantiation is parameterized, saving us the time and messiness of manually typing out potentially many instance variable assignments. To enable such syntax, we need only add a “constructor” to our Dog class, as shown below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public int weightInPounds;</span><br><span class="line"></span><br><span class="line">    public Dog(int w) &#123;</span><br><span class="line">        weightInPounds &#x3D; w;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void makeNoise() &#123;</span><br><span class="line">        if (weightInPounds &lt; 10) &#123;</span><br><span class="line">            System.out.println(&quot;yipyipyip!&quot;);</span><br><span class="line">        &#125; else if (weightInPounds &lt; 30) &#123;</span><br><span class="line">            System.out.println(&quot;bark. bark.&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;woof!&quot;);</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The constructor with signature <code>public Dog(int w)</code> will be invoked anytime that we try to create a Dog using the new keyword and a single integer parameter. For those of you coming from Python, the constructor is very similar to the <code>__init__</code> method.</p>
+<h2 id="Class-Methods-vs-Instance-Methods"><a href="#Class-Methods-vs-Instance-Methods" class="headerlink" title="Class Methods vs. Instance Methods"></a>Class Methods vs. Instance Methods</h2><p>Java allows us to define two types of methods:</p>
+<ul>
+<li>Class methdos, a.k.a static methods</li>
+<li>Instance methods, a.k.a non-static methods.</li>
+</ul>
+<p>Key differences between static and non-static methods:</p>
+<ul>
+<li>Static methods are invoked using the class name, e.g. <code>Dog.makeNoise();</code></li>
+<li>Instance methdos are invoked using an instance name, e.g. <code>maya.makeNocie();</code></li>
+<li>Static methods can’t access “my” instance variables, because there is no “me”.</li>
+</ul>
+<p>Static:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static void makeNoices() &#123;</span><br><span class="line">    System.out.println(&quot;bark!&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note: This method cannot access weightInPounds!<br>Invocation: <code>Dog.makeNoise();</code></p>
+<p>Non-Static</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void makeNoise() &#123;</span><br><span class="line">    if (weightInPounds &lt; 10&gt;) &#123;</span><br><span class="line">        System.out.println(&quot;yipyipyip!&quot;);</span><br><span class="line">    &#125; else if (weightInPounds &lt; 30&gt;) &#123;</span><br><span class="line">        System.out.println(&quot;bark. bark.&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        System.out.println(&quot;woof!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Invocation:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">maya &#x3D; newDog(100);</span><br><span class="line">maya.makeNocse();</span><br></pre></td></tr></table></figure>
+
+<p>Instance methods are actions that can be taken only by a specific instance of a class. Static methods are actions that are taken by the class itself. Both are useful in different circumstances. As an example of a static method, the <code>Math</code> class provides a <code>sqrt</code> method. Because it is static, we can call it as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; Math.sqrt(100);</span><br></pre></td></tr></table></figure>
+
+<p>If <code>sqrt</code> had been an instance method, we would have instead the awkward syntax below. Luckily <code>sqrt</code> is a static method so we don’t have to do this in real programs.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Math m &#x3D; new Math();</span><br><span class="line">x &#x3D; m.sqrt(100);</span><br></pre></td></tr></table></figure>
+
+<p>Sometimes, it makes sense to have a class with both instance and static methods. For example, suppose want the ability to compare two dogs. One way to do this is to add a static method for comparing Dogs.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static Dog maxDog(Dog d1, Dog d2) &#123;</span><br><span class="line">    if (d1.weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">        return d1;</span><br><span class="line">    &#125;</span><br><span class="line">    return d2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This method could be invoked by, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog d &#x3D; new Dog(15);</span><br><span class="line">Dog d2 &#x3D; new Dog(100);</span><br><span class="line">Dog.maxDog(d, d2);</span><br></pre></td></tr></table></figure>
+
+<p>Observe that we’ve invoked using the class name, since this method is a static method.</p>
+<p>We could also have implemented maxDog as a non-static method, e.g.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public Dog maxDog(Dog d2) &#123;</span><br><span class="line">    if (this.weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    return d2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Above, we use the keyword this to refer to the current object. This method could be invoked, for example, with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog d &#x3D; new Dog(15);</span><br><span class="line">Dog d2 &#x3D; new Dog(100);</span><br><span class="line">d.maxDog(d2);</span><br></pre></td></tr></table></figure>
+
+<p>Here, we invoke the method using a specific instance variable.</p>
+<p><strong>Exercise 1.2.1</strong>: What would the following method do? If you’re not sure, try it out.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static Dog maxDog(Dog d1, Dog d2) &#123;</span><br><span class="line">    if (weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    return d2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Answer: It will return an error, because static method can’t access an instance variable. </p>
+<h2 id="Static-Variables"><a href="#Static-Variables" class="headerlink" title="Static Variables"></a>Static Variables</h2><p>It is occasionally useful for classes to have static variables. These are properties inherent to the class itself, rather than the instance. For example, we might record that the scientific name (or binomen) for Dogs is “Canis familiaris”:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public int weightInPounds;</span><br><span class="line">    public static String binomen &#x3D; &quot;Canis familiaris&quot;;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Static variables should be accessed using the name of the class rather than a specific instance, e.g. you should use <code>Dog.binomen</code>, not <code>d.binomen</code>.</p>
+<p>While Java technically allows you to access a static variable using an instance name, it is bad style, confusing, and in my opinion an error by the Java designers.</p>
+<h2 id="public-static-void-main-String-args"><a href="#public-static-void-main-String-args" class="headerlink" title="public static void main(String[] args)"></a>public static void main(String[] args)</h2><p>With what we’ve learned so far, it’s time to demystify the declaration we’ve been using for the main method. Breaking it into pieces, we have:</p>
+<ul>
+<li><code>public</code> : So far, all of our methods start with this keyword.</li>
+<li><code>static</code> : It is a static method, not associated with any particiluar instance.</li>
+<li><code>void</code>: It has no return type.</li>
+<li><code>main</code>: This is the name of the method</li>
+<li><code>String[] args</code>: This is a parameter that is passed to the main method.</li>
+</ul>
+<p>Command Line Arguments:</p>
+<p>Since main is called by the Java interpreter itself rather than another Java class, it is the interpreter’s job to supply these arguments. They refer usually to the command line arguments. For example, consider the program <code>ArgsDemo</code> below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ArgsDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(args[0]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This program prints out the 0th command line argument, e.g.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ java ArgsDemo these are command line arguments</span><br><span class="line">these</span><br></pre></td></tr></table></figure>
+
+<p><strong>Summing Command Line Arguments</strong></p>
+<p><strong>Exercise 1.2.3</strong>: Try to write a program that sums up the command line arguments, assuming they are numbers. For a solution, see the webcast or the code provided on GitHub.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Class sum_num &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int N &#x3D; args.length;</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        int sum &#x3D; 0</span><br><span class="line">        while (i &lt; N&gt;) &#123;</span><br><span class="line">            sum +&#x3D; Integer.parseInt(args[i]);</span><br><span class="line">            i +&#x3D; 1</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://joshhug.gitbooks.io/hug61b/content">https://joshhug.gitbooks.io/hug61b/content</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OOP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/30/cs61b-note-Java-Part2-Objects/">Read All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cs61b-note-Java-Part" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -187,7 +369,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -198,17 +380,6 @@
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
@@ -571,7 +742,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,6 +751,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OOP</a>
               </li>
             
             <div class="clearfix"></div>
