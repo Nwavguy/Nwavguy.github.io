@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>Archives: 2020/9 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2020/09/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -130,81 +130,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Introduction-to-Computing-System-CIT593-Class-Note-Part1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/" class="archive-article-date">
+  	<time datetime="2020-09-01T15:38:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-01</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/">Introduction to Computing System(CIT593) Class Note(Part1)</a>
+      <a class="archive-article-title" href="/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/">Introduction to Computing System(CIT593) Class Note(Part1)</a>
     </h1>
   
 
-        
-        <a href="/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/" class="archive-article-date">
-  	<time datetime="2020-09-01T15:38:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="The-machine-model"><a href="#The-machine-model" class="headerlink" title="The machine model"></a>The machine model</h2><p>The basic model of a computer has 4 parts:</p>
-<ul>
-<li>Arithmetic &amp; Logic Unit (ALU)</li>
-<li>Memory for Instructions</li>
-<li>Memory for data</li>
-<li>Program Counter (points to current line in our program)</li>
-</ul>
-<p><img src="machinemodel.png" alt="A basic Model of a Computer"></p>
-<h2 id="Glossary"><a href="#Glossary" class="headerlink" title="Glossary"></a>Glossary</h2><ul>
-<li><strong>CPU(Central Processing Unit):</strong>  the “overworked clerk” performs simple tasks<br>(ADD/SUB/MUL/DIV/LOGIC). The task to perform is also known as an<br>“instruction.”</li>
-<li><strong>Memory:</strong> the clerk’s “desk drawers,” a.k.a. the clerk’s “memory.” Each drawer has a number, also known as an address.</li>
-<li><strong>Program Memory:</strong> contains instructions for the clerk and tells it what to do.</li>
-<li><strong>Data memory:</strong> contains data for the clerk to work on</li>
-<li><strong>Program Counter (PC):</strong> tells the clerk whcih program memory drawer to open up and execute.</li>
-</ul>
-<h2 id="Basic-Operation-of-a-CPU"><a href="#Basic-Operation-of-a-CPU" class="headerlink" title="Basic Operation of a CPU"></a>Basic Operation of a CPU</h2><ul>
-<li>Program Counter tells clerk which drawer to open up (fetching)</li>
-<li>Clerk examines instruction and performs operation (decoding and execution)</li>
-<li>stores result of instruction in data memory drawer</li>
-<li>Updates the program counter(PC)<ul>
-<li>PC = PC + 1; so we advance to next instruction upon repeat</li>
-<li>optionally: PC = some other value; if we wish to ‘jump’ around to another<br>part of our program.</li>
-</ul>
-</li>
-<li>Repeats this process unitil instructions are comlete</li>
-</ul>
-<h2 id="Important-Questions-in-this-course"><a href="#Important-Questions-in-this-course" class="headerlink" title="Important Questions in this course"></a>Important Questions in this course</h2><ul>
-<li>How precisely is information stored?</li>
-<li>How do we design circuits that perform operations like addition and subtraction</li>
-<li>How do we design a machine that can execute a sequence of instructions?</li>
-<li>How do we program such a machine?</li>
-</ul>
-<h2 id="Level-of-Transforming-How-do-we-get-the-electorns-to-do-the-work"><a href="#Level-of-Transforming-How-do-we-get-the-electorns-to-do-the-work" class="headerlink" title="Level of Transforming (How do we get the electorns to do the work? )"></a>Level of Transforming (How do we get the electorns to do the work? )</h2><p><img src="figure19.png"></p>
-<h3 id="The-ISA"><a href="#The-ISA" class="headerlink" title="The ISA"></a>The ISA</h3><p>The instruction set architecture(ISA): is the complete specification of the interface between programs that have been written and the underlying computer hardware that must carry out the work of thsoe programs.</p>
-<ul>
-<li>opcode: describe the operation</li>
-<li>operand: describe individual data values</li>
-<li>data type: a representation of an operand such that the computer can perorm operations on that represeentation.</li>
-</ul>
-<p>The number of opcodes, data types, and addressing modes specified by an ISA vary among different ISAs. The x86, the ISA used in the PC has more than 200 opcodes, more than a dozen data types, and more two dozon addressing modes.</p>
-<p>The ISA also specifies the number of unique locations that compreise the computer’s memory and the number of individual 0s and 1s taht anre contained in each location.</p>
-<p>Many ISAs are using today. The most widely known as x86. Other ISAs include ARM, POWER and APARC.</p>
-<p>The translation from a high-level language(such as C) to the ISA of the computer on which the program will execute(such as x86) is usually done by a translating program called a compiler.  To translate from a program written in C to the x86 ISA, one would need a C to x86 compiler. </p>
-<p>The transaltion from the unique assembly language of a computer to its ISA is done by an <em>assembler</em>. </p>
-<h3 id="THe-Microarchitecture"><a href="#THe-Microarchitecture" class="headerlink" title="THe Microarchitecture"></a>THe Microarchitecture</h3><p>The ISAs discussed in the previous lecture inlucding x86(Intel), the PowerPC(IBM and Motorora), and THUMB(ARM). Each has been implemented by many different microarchitectures. For example, the x86’s original implementation in 1979 was the 8086, followed by the 80286, 80386, and 80486 in the 1980s. More recently, in 2001, Intel introduced the Pentium IV microprocessor. Even more recently, in 2015, Intel introduced Skylake. Each of these x86 microprocessors has its own microarchitecture.<br>Each microarchitecture is an opportunity for computer designers to make differnt tradeoffs between the cost of microprocessor, the performance that the microprocessor will prodie, and the energy that is required to power the microprocessor. </p>
-<h3 id="The-Logic-Circuit"><a href="#The-Logic-Circuit" class="headerlink" title="The Logic Circuit"></a>The Logic Circuit</h3><p>The next step is to implement each element of the microarchitecture out of simple<br>logic circuits. Here also there are choices, as the logic designer decides how to<br>best make the tradeoffs between cost and performance. So, for example, even for<br>an operation as simple as addition, there are several choices of logic circuits to<br>perform the operation at differing speeds and corresponding costs.</p>
-<h3 id="The-devise"><a href="#The-devise" class="headerlink" title="The devise"></a>The devise</h3><p>Finally, each basic logic circuit is implemented in accordance with the requirements of the particular device technology used. So, CMOS circuits are different from NMOS circuits, which are different, in turn, from gallium arsenide<br>circuits.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -220,568 +173,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/">Read All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-cs61b-note-Java-Part2-Objects" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/30/cs61b-note-Java-Part2-Objects/">cs61b note (Java Part2 Objects)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/30/cs61b-note-Java-Part2-Objects/" class="archive-article-date">
-  	<time datetime="2020-08-30T21:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Defining-and-Using-Classes"><a href="#Defining-and-Using-Classes" class="headerlink" title="Defining and Using Classes"></a>Defining and Using Classes</h2><h3 id="Static-vs-Non-Static-Methods"><a href="#Static-vs-Non-Static-Methods" class="headerlink" title="Static vs. Non-Static Methods"></a>Static vs. Non-Static Methods</h3><p>All code in Java must be a part of a class.<br>A class that uses another class is sometime called a “client” of that class, i.e <code>DogLauncher</code> is a client of <code>Dog</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public static void makeNoise() &#123;</span><br><span class="line">        System.out.println(&quot;Bark!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class DogLauncher &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Dog.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Instance-Variables-and-Object-Instantiation"><a href="#Instance-Variables-and-Object-Instantiation" class="headerlink" title="Instance Variables and Object Instantiation"></a>Instance Variables and Object Instantiation</h2><p>Not all dogs are alike. Some dogs like to yap incessantly, while others bellow sonorously, bringing joy to all who hear their glorious call. Often, we write programs to mimic features of the universe we inhabit, and Java’s syntax was crafted to easily allow such mimicry.</p>
-<p>As you should have seen in the past, classes can be instantiated, and instances can hold data. This leads to a more natural approach, where we create instances of the Dog class and make the behavior of the Dog methods contingent upon the properties of the specific Dog. To make this more concrete, consider the class below:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public int weightInPounds;</span><br><span class="line"></span><br><span class="line">    public void makeNoise() &#123;</span><br><span class="line">        if (weightInPounds &lt; 10) &#123;</span><br><span class="line">            System.out.println(&quot;yipyipyip!&quot;);</span><br><span class="line">        &#125; else if (weightInPounds &lt; 30) &#123;</span><br><span class="line">            System.out.println(&quot;bark. bark.&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;woof!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Note: </p>
-<ol>
-<li><code>public int weightInPounds;</code> is an instance variable, no <code>static</code> key word here. The variable can be different for different objects (dogs in this case even there are in the same class).</li>
-<li><code>public void makeNoise()</code> did not have the <code>static</code> keyword. We call such methods <em>instance methods</em> or <em>non-static</em> methods.  </li>
-</ol>
-<p>As an example of using such a Dog, consider:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class DogLauncher &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Dog d;</span><br><span class="line">        d &#x3D; new Dog();</span><br><span class="line">        d.weightInPounds &#x3D; 20;</span><br><span class="line">        d.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>When run, this program will create a Dog with weight 20, and that Dog will soon let out a nice “bark. bark.”.</p>
-<p>Some key oberservations and terminology:</p>
-<ul>
-<li>An <code>Object</code> in Java is an instance of any class.</li>
-<li>The <code>Dog</code> class has its own variables, also known as <em>instance variables</em> or <em>non-static variables</em>. These must be declard inside the class, unlike languages like Python or Matlab, where new variables can be added at runtime.</li>
-<li>The method that we created in the <code>Dog</code> class did not have the <code>static</code> keyword. We call such methods <em>instance methods</em> or <em>non-static methods</em>.</li>
-<li>To call the makeNoise method, we had to first instantiate a Dog using the new keyword, and then make a specific Dog bark. In other words, we called <code>d.makeNoise()</code> instead of <code>Dog.makeNoise()</code>.</li>
-<li>Once an object has been instantiated, it can be assigned to a declared variable of the appropriate type, e.g. <code>d = new Dog();</code></li>
-<li>Variables and methods of a class are also called <em>members</em> of a class.</li>
-<li>Members of a class are accessed using dot notation. </li>
-</ul>
-<h2 id="Constructors-in-Java"><a href="#Constructors-in-Java" class="headerlink" title="Constructors in Java"></a>Constructors in Java</h2><p>As you’ve hopefully seen before, we usually construct objects in object oriented languages using a constructor:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class DogLauncher &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Dog d &#x3D; new Dog(20);</span><br><span class="line">        d.makeNoise();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Here, the instantiation is parameterized, saving us the time and messiness of manually typing out potentially many instance variable assignments. To enable such syntax, we need only add a “constructor” to our Dog class, as shown below:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public int weightInPounds;</span><br><span class="line"></span><br><span class="line">    public Dog(int w) &#123;</span><br><span class="line">        weightInPounds &#x3D; w;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void makeNoise() &#123;</span><br><span class="line">        if (weightInPounds &lt; 10) &#123;</span><br><span class="line">            System.out.println(&quot;yipyipyip!&quot;);</span><br><span class="line">        &#125; else if (weightInPounds &lt; 30) &#123;</span><br><span class="line">            System.out.println(&quot;bark. bark.&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;woof!&quot;);</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The constructor with signature <code>public Dog(int w)</code> will be invoked anytime that we try to create a Dog using the new keyword and a single integer parameter. For those of you coming from Python, the constructor is very similar to the <code>__init__</code> method.</p>
-<h2 id="Class-Methods-vs-Instance-Methods"><a href="#Class-Methods-vs-Instance-Methods" class="headerlink" title="Class Methods vs. Instance Methods"></a>Class Methods vs. Instance Methods</h2><p>Java allows us to define two types of methods:</p>
-<ul>
-<li>Class methdos, a.k.a static methods</li>
-<li>Instance methods, a.k.a non-static methods.</li>
-</ul>
-<p>Key differences between static and non-static methods:</p>
-<ul>
-<li>Static methods are invoked using the class name, e.g. <code>Dog.makeNoise();</code></li>
-<li>Instance methdos are invoked using an instance name, e.g. <code>maya.makeNocie();</code></li>
-<li>Static methods can’t access “my” instance variables, because there is no “me”.</li>
-</ul>
-<p>Static:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static void makeNoices() &#123;</span><br><span class="line">    System.out.println(&quot;bark!&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Note: This method cannot access weightInPounds!<br>Invocation: <code>Dog.makeNoise();</code></p>
-<p>Non-Static</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void makeNoise() &#123;</span><br><span class="line">    if (weightInPounds &lt; 10&gt;) &#123;</span><br><span class="line">        System.out.println(&quot;yipyipyip!&quot;);</span><br><span class="line">    &#125; else if (weightInPounds &lt; 30&gt;) &#123;</span><br><span class="line">        System.out.println(&quot;bark. bark.&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        System.out.println(&quot;woof!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Invocation:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">maya &#x3D; newDog(100);</span><br><span class="line">maya.makeNocse();</span><br></pre></td></tr></table></figure>
-
-<p>Instance methods are actions that can be taken only by a specific instance of a class. Static methods are actions that are taken by the class itself. Both are useful in different circumstances. As an example of a static method, the <code>Math</code> class provides a <code>sqrt</code> method. Because it is static, we can call it as follows:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; Math.sqrt(100);</span><br></pre></td></tr></table></figure>
-
-<p>If <code>sqrt</code> had been an instance method, we would have instead the awkward syntax below. Luckily <code>sqrt</code> is a static method so we don’t have to do this in real programs.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Math m &#x3D; new Math();</span><br><span class="line">x &#x3D; m.sqrt(100);</span><br></pre></td></tr></table></figure>
-
-<p>Sometimes, it makes sense to have a class with both instance and static methods. For example, suppose want the ability to compare two dogs. One way to do this is to add a static method for comparing Dogs.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static Dog maxDog(Dog d1, Dog d2) &#123;</span><br><span class="line">    if (d1.weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">        return d1;</span><br><span class="line">    &#125;</span><br><span class="line">    return d2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This method could be invoked by, for example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog d &#x3D; new Dog(15);</span><br><span class="line">Dog d2 &#x3D; new Dog(100);</span><br><span class="line">Dog.maxDog(d, d2);</span><br></pre></td></tr></table></figure>
-
-<p>Observe that we’ve invoked using the class name, since this method is a static method.</p>
-<p>We could also have implemented maxDog as a non-static method, e.g.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public Dog maxDog(Dog d2) &#123;</span><br><span class="line">    if (this.weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    return d2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Above, we use the keyword this to refer to the current object. This method could be invoked, for example, with:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog d &#x3D; new Dog(15);</span><br><span class="line">Dog d2 &#x3D; new Dog(100);</span><br><span class="line">d.maxDog(d2);</span><br></pre></td></tr></table></figure>
-
-<p>Here, we invoke the method using a specific instance variable.</p>
-<p><strong>Exercise 1.2.1</strong>: What would the following method do? If you’re not sure, try it out.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static Dog maxDog(Dog d1, Dog d2) &#123;</span><br><span class="line">    if (weightInPounds &gt; d2.weightInPounds) &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    return d2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Answer: It will return an error, because static method can’t access an instance variable. </p>
-<h2 id="Static-Variables"><a href="#Static-Variables" class="headerlink" title="Static Variables"></a>Static Variables</h2><p>It is occasionally useful for classes to have static variables. These are properties inherent to the class itself, rather than the instance. For example, we might record that the scientific name (or binomen) for Dogs is “Canis familiaris”:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Dog &#123;</span><br><span class="line">    public int weightInPounds;</span><br><span class="line">    public static String binomen &#x3D; &quot;Canis familiaris&quot;;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Static variables should be accessed using the name of the class rather than a specific instance, e.g. you should use <code>Dog.binomen</code>, not <code>d.binomen</code>.</p>
-<p>While Java technically allows you to access a static variable using an instance name, it is bad style, confusing, and in my opinion an error by the Java designers.</p>
-<h2 id="public-static-void-main-String-args"><a href="#public-static-void-main-String-args" class="headerlink" title="public static void main(String[] args)"></a>public static void main(String[] args)</h2><p>With what we’ve learned so far, it’s time to demystify the declaration we’ve been using for the main method. Breaking it into pieces, we have:</p>
-<ul>
-<li><code>public</code> : So far, all of our methods start with this keyword.</li>
-<li><code>static</code> : It is a static method, not associated with any particiluar instance.</li>
-<li><code>void</code>: It has no return type.</li>
-<li><code>main</code>: This is the name of the method</li>
-<li><code>String[] args</code>: This is a parameter that is passed to the main method.</li>
-</ul>
-<p>Command Line Arguments:</p>
-<p>Since main is called by the Java interpreter itself rather than another Java class, it is the interpreter’s job to supply these arguments. They refer usually to the command line arguments. For example, consider the program <code>ArgsDemo</code> below:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ArgsDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(args[0]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This program prints out the 0th command line argument, e.g.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ java ArgsDemo these are command line arguments</span><br><span class="line">these</span><br></pre></td></tr></table></figure>
-
-<p><strong>Summing Command Line Arguments</strong></p>
-<p><strong>Exercise 1.2.3</strong>: Try to write a program that sums up the command line arguments, assuming they are numbers. For a solution, see the webcast or the code provided on GitHub.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Class sum_num &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int N &#x3D; args.length;</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        int sum &#x3D; 0</span><br><span class="line">        while (i &lt; N&gt;) &#123;</span><br><span class="line">            sum +&#x3D; Integer.parseInt(args[i]);</span><br><span class="line">            i +&#x3D; 1</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://joshhug.gitbooks.io/hug61b/content">https://joshhug.gitbooks.io/hug61b/content</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OOP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/30/cs61b-note-Java-Part2-Objects/">Read All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cs61b-note-Java-Part" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/30/cs61b-note-Java-Part/">cs61b note (Java Part1 Essentials)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/30/cs61b-note-Java-Part/" class="archive-article-date">
-  	<time datetime="2020-08-30T17:07:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h2><p>Let’s look at our first Java program.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line">    public static void main (String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello World&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Some key syntatic features to notice:</p>
-<ul>
-<li>The program consits of a class declaration, which is delcared using keywords <code>public class</code>. In java, all code lives inside of classess</li>
-<li>The code that is run is insdie of a method called <code>main</code>, which is declared as public static void main(String[] args)</li>
-</ul>
-<h2 id="Runing-a-Java-Program"><a href="#Runing-a-Java-Program" class="headerlink" title="Runing a Java Program"></a>Runing a Java Program</h2><p>The most common way to execute a Java program is to run it through a sequence of two programs. The first is the Java compiler, or <code>javac</code>. The second is the Java interpreter, or <code>java</code>.</p>
-<p><img src="https://joshhug.gitbooks.io/hug61b/content/assets/compilation_figure.svg"></p>
-<p>For example, to run <code>HelloWorld.java</code>, type the command <code>javac HelloWorld.java</code> into the terminal, followed by command <code>java HelloWorld</code>. The result would look something like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ javac HelloWorld.java</span><br><span class="line">$ java HelloWorld</span><br><span class="line">Hello World! </span><br></pre></td></tr></table></figure>
-
-<h2 id="Static-Typing"><a href="#Static-Typing" class="headerlink" title="Static Typing"></a>Static Typing</h2><p>One of the most important features of Java is that all variables and expressions have a so-called static type. Java variables can contain values of that type, and only that type. Furthermore, the type of a variable can never change.</p>
-<h2 id="Extra-Thought-Exercise"><a href="#Extra-Thought-Exercise" class="headerlink" title="Extra Thought Exercise"></a>Extra Thought Exercise</h2><p>In Java, we can say <code>System.out.println(5 + &quot; &quot;)</code>;. But in Python, we can’t say <code>print(5 + &quot;horse&quot;)</code>, like we saw above. Why is that so?</p>
-<p>Consider these two Java statements:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String h &#x3D; 5 + &quot;horse&quot;;</span><br></pre></td></tr></table></figure>
-<p>and</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int h &#x3D; 5 + &quot;horse&quot;;</span><br></pre></td></tr></table></figure>
-<p>The first one of these will succeed; the second will give a compiler error. Since Java is strongly typed, if you tell it <code>h</code> is a string, it can concatenate the elements and give you a string. But when <code>h</code> is an <code>int</code>, it can’t concatenate a number and a string and give you a number.</p>
-<p>Python doesn’t constrain the type, and it can’t make an assumption for what type you want. Is <code>x = 5 + &quot;horse&quot;</code> supposed to be a number? A string? Python doesn’t know. So it errors.</p>
-<p>In this case, <code>System.out.println(5 + &quot;horse&quot;)</code>;, Java interprets the arguments as a string concatentation, and prints out “5horse” as your result. Or, more usefully, <code>System.out.println(5 + &quot; &quot;)</code>; will print a space after your “5”.</p>
-<p>What does ‘System.out.println(5 + “10”)’; print? 510, or 15? How about ‘System.out.println(5 + 10);’?</p>
-<p>Answer:<br><code>System.out.println(5 + &quot;10&quot;)</code> will print 510.<br><code>System.out.println(5 + 10)</code> will print 15.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://joshhug.gitbooks.io/hug61b/">https://joshhug.gitbooks.io/hug61b/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/30/cs61b-note-Java-Part/">Read All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode-136-Single-Number" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/leetcode-136-Single-Number/">leetcode 136 Single Number</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/leetcode-136-Single-Number/" class="archive-article-date">
-  	<time datetime="2020-08-29T23:25:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Single-Number"><a href="#Single-Number" class="headerlink" title="Single Number"></a>Single Number</h1><p>Given a non-empty array of integers, every element appears twice except for one. Find that single one.<br>Note:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<p>Example 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:[2, 2, 1]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-
-<p>Example 2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:[4,1,2,1,2]</span><br><span class="line">Output:4</span><br></pre></td></tr></table></figure>
-
-<h2 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h2><p>Use a hash table with a key value pair of (number, count) to keep track of the count of each element in the array. Then loop through the elements in the keySet and see if return the element with value = 1.</p>
-<p>Code:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int singleNumber(int[] nums) &#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hash_table &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">        for (int i: nums) &#123;</span><br><span class="line">            hash_table.put(i, hash_table.getOrDefault(i, 0) + 1); </span><br><span class="line">        &#125;</span><br><span class="line">        for (int i : hash_table.keySet()) &#123;</span><br><span class="line">            if (hash_table.get(i) &#x3D;&#x3D; 1) &#123;</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Note:  </p>
-<ol>
-<li>hash_table has a method named <strong>getOrDefault</strong> which can return the value if the key exist and 0 otherwise, this will helpful for building the hash_table used to count the element in the array.</li>
-<li><strong>keySet</strong> method will return all the keys in the hash table as a set</li>
-<li>Must return 0 at the end, or the code can’t compile. </li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/leetcode-136-Single-Number/">Read All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/hello-world/" class="archive-article-date">
-  	<time datetime="2020-08-29T22:33:45.048Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/hello-world/">Read All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Use-markdown-to-write-my-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/Use-markdown-to-write-my-first-blog/">Use markdown to write my first blog</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/Use-markdown-to-write-my-first-blog/" class="archive-article-date">
-  	<time datetime="2020-08-29T20:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="How-to-use-markdown-to-write-blog"><a href="#How-to-use-markdown-to-write-blog" class="headerlink" title="How to use markdown to write blog"></a>How to use markdown to write blog</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>This is my first blog written in markdown and it introduce the way to create code blocks, links and images.</p>
-</br>
-Here I use VScode to edit this blog on my personal computer and deploy it to github.
-
-<h2 id="Code-Block"><a href="#Code-Block" class="headerlink" title="Code Block"></a>Code Block</h2><p>Below is how to add a block of code, the code should be in the middle of  ```. It will look like the following. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class HelloWorld &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello World&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><p>There are two different link types in Markdown, but both of them render the exact same way. The first link style is called an inline link. To create an inline link, you wrap the link text in brackets ( [ ] ), and then you wrap the link in parenthesis ( ( ) ). </p>
-<p>For example, to create a hyperlink to <a target="_blank" rel="noopener" href="http://www.github.com/">www.github.com</a>, with a link text that says, Visit GitHub!, you’d write this in Markdown: <code>[Visit GitHub!](www.github.com).</code> </p>
-<p>You will get:<br><a href="www.github.com">Visit GitHub!</a></p>
-<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><p>If you know how to create links in Markdown, you can create images, too. The syntax is nearly the same.</p>
-<p>Images also have two styles, just like links, and both of them render the exact same way. The difference between links and images is that images are prefaced with an exclamation point ( ! ).</p>
-<p>The first image style is called an inline image link. To create an inline image link, enter an exclamation point ( ! ), wrap the alt text in brackets ( [ ] ), and then wrap the link in parenthesis ( ( ) ). (Alt text is a phrase or sentence that describes the image for the visually impaired.)</p>
-<p>For example, to create an inline image link to <a target="_blank" rel="noopener" href="https://octodex.github.com/images/bannekat.png">https://octodex.github.com/images/bannekat.png</a>, with an alt text that says, Benjamin Bannekat, you’d write this in Markdown: <code>![Benjamin Bannekat](https://octodex.github.com/images/bannekat.png)</code>.</p>
-<p>and it will look like this: </p>
-<p><img src="https://octodex.github.com/images/bannekat.png" alt="Benjamin Bannekat"></p>
-<h2 id="Sources"><a href="#Sources" class="headerlink" title="Sources:"></a>Sources:</h2><p><a target="_blank" rel="noopener" href="http://www.markdowntutorial.com/">www.markdowntutorial.com</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/Use-markdown-to-write-my-first-blog/">Read All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -803,9 +207,9 @@ Here I use VScode to edit this blog on my personal computer and deploy it to git
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
