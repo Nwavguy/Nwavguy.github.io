@@ -130,6 +130,198 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cs61b-note-Java-Part3-Lists" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/05/cs61b-note-Java-Part3-Lists/">cs61b note (Java Part3 Lists)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/05/cs61b-note-Java-Part3-Lists/" class="archive-article-date">
+  	<time datetime="2020-09-05T22:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="The-mystery-of-the-Walrus"><a href="#The-mystery-of-the-Walrus" class="headerlink" title="The mystery of the Walrus"></a>The mystery of the Walrus</h2><p>To begin our journey, we will first ponder the profound Mystery of the Walrus.</p>
+<p>Try to predict what happens when we run the code below. Does the change to b affect a? Hint: If you’re coming from Python, Java has the same behavior.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Walrus a &#x3D; new Walrus(1000, 8.3);</span><br><span class="line">Walrus b;</span><br><span class="line">b &#x3D; a;</span><br><span class="line">b.weight &#x3D; 5;</span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>
+
+<p>Answer: Yes.  </p>
+<p>Now try to predict what happens when we run the code below. Does the change to x affect y?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int x &#x3D; 5;</span><br><span class="line">int y;</span><br><span class="line">y &#x3D; x;</span><br><span class="line">x &#x3D; 2;</span><br><span class="line">System.out.println(&quot;x is: &quot; + x);</span><br><span class="line">System.out.println(&quot;y is: &quot; + y);</span><br></pre></td></tr></table></figure>
+
+<p>Answer: No. </p>
+<p>While subtle, the key ideas that underlie the Mystery of the Walrus will be incredibly important to the efficiency of the data structures that we’ll implement in this course, and a deep understanding of this problem will also lead to safer, more reliable code.</p>
+<h2 id="Bits"><a href="#Bits" class="headerlink" title="Bits"></a>Bits</h2><p>All information in your computer is stored in memory as a sequence of ones and zeros. Some examples:</p>
+<ul>
+<li>72 is often stored as 01001000</li>
+<li>205.75 is often stored as 01000011 01001101 11000000 00000000</li>
+<li>The letter H is often stored as 01001000 (same as 72)</li>
+<li>The true value is often stored as 00000001</li>
+</ul>
+<p>Though we won’t learn the language of binary, it’s good to know that this is what is going on under the hood. One interesting observation is that both 72 and H are stored as 01001000. This raises the question: how does a piece of Java code know how to interpret 01001000? The answer is through types! For example, consider the code below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char c &#x3D; &#39;H&#39;;</span><br><span class="line">int x &#x3D; c;</span><br><span class="line">System.out.println(c);</span><br><span class="line">System.out.println(x);</span><br></pre></td></tr></table></figure>
+
+<p>If we run this code, we get:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">H</span><br><span class="line">72</span><br></pre></td></tr></table></figure>
+
+<p>In this case, both the x and c variables contain the same bits (well, almost…), but the Java interpreter treats them differently when printed.</p>
+<p>In Java, there are 8 primitive types: byte, short, int, long, float, double, boolean, and char. Each has different properties that we’ll discuss throughout the course, with the exception of short and float, which you’ll likely never use.</p>
+<h2 id="Declaring-a-Variable-Simplified"><a href="#Declaring-a-Variable-Simplified" class="headerlink" title="Declaring a Variable(Simplified)"></a>Declaring a Variable(Simplified)</h2><p>One can think of your computer as containing a vast number of memory bits for storing information, each of which has a unique address. Many billions of such bits are available to the modern computer.</p>
+<p>When you declare a variable of a certain type, Java finds a contiguous block with exactly enough bits to hold a thing of that type. For example, if you declare an int, you get a block of 32 bits. If you declare a byte, you get a block of 8 bits. Each data type in Java holds a different number of bits. The exact number is not terribly important to us in this class.</p>
+<p>For the sake of having a convenient metaphor, we’ll call one of these blocks a “box” of bits.</p>
+<p>In addition to setting aside memory, the Java interpreter also creates an entry in an internal table that maps each variable name to the location of the first bit in the box.</p>
+<p>For example, if you declared int x and double y, then Java might decide to use bits 352 through 384 of your computer’s memory to store x, and bits 20800 through 20864 to store y. The interpreter will then record that int x starts at bit 352 and y starts at bit 20800. For example, after executing the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int x;</span><br><span class="line">double y;</span><br></pre></td></tr></table></figure>
+<p>We’d end up with boxes of sized 32 and 64 respectively, as shown in the figure below:<br><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/x_and_y_empty_bitwise.png"></p>
+<p>The Java language provides no way for you to know the location of the box, e.g. you can’t somehow find out that x is in position 352. In other words, the exact memory address is below the level of abstraction accessible to us in Java. This is unlike languages like C where you can ask the language for the exact address of a piece of data. For this reason, I have omitted the addresses from the figure above.</p>
+<p>This feature of Java is a tradeoff! Hiding memory locations from the programmer gives you less control, which prevents you from doing certain types of optimizations. However, it also avoids a large class of very tricky programming errors. In the modern era of very low cost computing, this tradeoff is usually well worth it. As the wise Donald Knuth once said: “We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil”.</p>
+<p>As an analogy, you do not have direct control over your heartbeat. While this restricts your ability to optimize for certain situations, it also avoids the possibility of making stupid errors like accidentally turning it off.</p>
+<p>Java does not write anything into the reserved box when a variable is declared. In other words, there are no default values. As a result, the Java compiler prevents you from using a variable until after the box has been filled with bits using the = operator. For this reason, I have avoided showing any bits in the boxes in the figure above.</p>
+<p>When you assign values to a memory box, it is filled with the bits you specify. For example, if we execute the lines:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; -1431195969;</span><br><span class="line">y &#x3D; 567213.112;</span><br></pre></td></tr></table></figure>
+
+<p>Then the memory boxes from above are filled as shown below, in what I call <strong>box notation</strong>.</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/x_and_y_empty_filled.png"></p>
+<p>The top bits represent -1431195969, and the bottom bits represent 567213.112. Why these specific sequences of bits represent these two numbers is not important, and is a topic covered in CS61C. However, if you’re curious, see integer representations and double representations on wikipedia.</p>
+<p>Note: Memory allocation is actually somewhat more complicated than described here, and is a topic of CS 61C. However, this model is close enough to reality for our purposes in 61B.</p>
+<h2 id="Simplified-Box-Notation"><a href="#Simplified-Box-Notation" class="headerlink" title="Simplified Box Notation"></a>Simplified Box Notation</h2><p>While the box notation we used in the previous section is great for understanding approximately what’s going on under the hood, it’s not useful for practical purposes since we don’t know how to interpret the binary bits.</p>
+<p>Thus, instead of writing memory box contents in binary, we’ll write them in human readable symbols. We will do this throughout the rest of the course. For example, after executing:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int x;</span><br><span class="line">double y;</span><br><span class="line">x &#x3D; -1431195969;</span><br><span class="line">y &#x3D; 567213.112;</span><br></pre></td></tr></table></figure>
+
+<p>We can represent the program environment using what I call simplified box notation, shown below:<br><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/x_and_y_simplified_box_notation.png"></p>
+<h2 id="The-Golden-Rule-of-Equals-GRoE"><a href="#The-Golden-Rule-of-Equals-GRoE" class="headerlink" title="The Golden Rule of Equals(GRoE)"></a>The Golden Rule of Equals(GRoE)</h2><p>Now armed with simplified box notation, we can finally start to resolve the Mystery of the Walrus.</p>
+<p>It turns out our Mystery has a simple solution: When you write y = x, you are telling the Java interpreter to copy the bits from x into y. This Golden Rule of Equals (GRoE) is the root of all truth when it comes to understanding our Walrus Mystery.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int x &#x3D; 5;</span><br><span class="line">int y;</span><br><span class="line">y &#x3D; x;</span><br><span class="line">x &#x3D; 2;</span><br><span class="line">System.out.println(&quot;x is: &quot; + x);</span><br><span class="line">System.out.println(&quot;y is: &quot; + y);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference-Types"><a href="#Reference-Types" class="headerlink" title="Reference Types"></a>Reference Types</h2><p>Above, we said that there are 8 primitive types: byte, short, int, long, float, double, boolean, char. Everything else, including arrays, is not a primitive type but rather a reference type.</p>
+<p>When we instantiate an Object using new (e.g. Dog, Walrus, Planet), Java first allocates a box for each instance variable of the class, and fills them with a default value. The constructor then usually (but not always) fills every box with some other value.</p>
+<p>For example, if our Warlus class is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static class Walrus &#123;</span><br><span class="line">    public int weight;</span><br><span class="line">    public double tuskSize;</span><br><span class="line"></span><br><span class="line">    public Walrus(int w, double ts) &#123;</span><br><span class="line">          weight &#x3D; w;</span><br><span class="line">          tuskSize &#x3D; ts;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>And we create a Walrus using new Walrus(1000, 8.3);, then we end up with a Walrus consisting of two boxes of 32 and 64 bits respectively:</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/anonymous_walrus.png"></p>
+<p>In real implementations of the Java programming language, there is actually some additional overhead for any object, so a Walrus takes somewhat more than 96 bits. However, for our purposes, we will ignore such overhead, since we will never interact with it directly.</p>
+<p>The Walrus we’ve created is anonymous, in the sense that it has been created, but it is not stored in any variable. Let’s now turn to variables that store objects.</p>
+<h2 id="Reference-Variable-Declaration"><a href="#Reference-Variable-Declaration" class="headerlink" title="Reference Variable Declaration"></a>Reference Variable Declaration</h2><p>When we declare a variable of any reference type (Walrus, Dog, Planet, array, etc.), Java allocates a box of 64 bits, no matter what type of object.</p>
+<p>At first glance, this might seem to lead to a Walrus Paradox. Our Walrus from the previous section required more than 64 bits to store. Furthermore, it may seem bizarre that no matter the type of object, we only get 64 bits to store it.</p>
+<p>However, this problem is easily resolved with the following piece of information: the 64 bit box contains not the data about the walrus, but instead the address of the Walrus in memory.</p>
+<p>As an example, suppose we call:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Walrus someWalrus;</span><br><span class="line">someWalrus &#x3D; new Walrus(1000, 8.3);</span><br></pre></td></tr></table></figure>
+
+<p>The first line creates a box of 64 bits. The second line creates a new Walrus, and the address is returned by the new operator. These bits are then copied into the someWalrus box according to the GRoE.</p>
+<p>If we imagine our Walrus weight is stored starting at bit <code>5051956592385990207</code> of memory, and tuskSize starts at bit <code>5051956592385990239</code>, we might store <code>5051956592385990207</code> in the Walrus variable. In binary, <code>5051956592385990207</code> is represented by the 64 bits <code>0100011000011100001001111100000100011101110111000001111000111111</code>, giving us in box notation:</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/someWalrus_bit_notation.png"></p>
+<p>We can also assign the special value <code>null</code> to a reference variable, corresponding to all zeros.</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/someWalrus_bit_notation_null.png"></p>
+<h2 id="Box-and-Pointer-Notation"><a href="#Box-and-Pointer-Notation" class="headerlink" title="Box and Pointer Notation"></a>Box and Pointer Notation</h2><p>Just as before, it’s hard to interpret a bunch of bits inside a reference variable, so we’ll create a simplified box notation for reference variable as follows:</p>
+<p>If an address is all zeros, we will represent it with null.<br>A non-zero address will be represented by an arrow pointing at an object instantiation.<br>This is also sometimes called “box and pointer” notation.</p>
+<p>For the examples from the previous section, we’d have:</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/someWalrus_simplified_bit_notation.png"></p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/someWalrus_simplified_bit_notation_null.png"></p>
+<h2 id="Resolving-the-Mystery-of-the-Walrus"><a href="#Resolving-the-Mystery-of-the-Walrus" class="headerlink" title="Resolving the Mystery of the Walrus"></a>Resolving the Mystery of the Walrus</h2><p>We’re now finally ready to resolve, fully and completely, the Mystery of the Walrus.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Walrus a &#x3D; new Walrus(1000, 8.3);</span><br><span class="line">Walrus b;</span><br><span class="line">b &#x3D; a;</span><br></pre></td></tr></table></figure>
+
+<p>After the first line is executed, we have:</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/mystery_of_the_walrus_resolved_step1.png"></p>
+<p>After the second line is executed, we have:</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/mystery_of_the_walrus_resolved_step2.png"></p>
+<p>Note that above, b is undefined, not null.</p>
+<p>According to the GRoE, the final line simply copies the bits in the a box into the b box. Or in terms of our visual metaphor, this means that b will copy exactly the arrow in a and now show an arrow pointing at the same object.</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/mystery_of_the_walrus_resolved_step3.png"></p>
+<p>And that’s it. There’s no more complexity than this.</p>
+<h2 id="Parameter-Passing"><a href="#Parameter-Passing" class="headerlink" title="Parameter Passing"></a>Parameter Passing</h2><p>When you pass parameters to a function, you are also simply copying the bits. In other words, the GRoE also applies to parameter passing. Copying the bits is usually called “pass by value”. In Java, we always pass by value.</p>
+<p>For example, consider the function below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static double average(double a, double b) &#123;</span><br><span class="line">    return (a + b) &#x2F; 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Suppose we invoke this function as shown below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    double x &#x3D; 5.5;</span><br><span class="line">    double y &#x3D; 10.5;</span><br><span class="line">    double avg &#x3D; average(x, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>After executing the first two lines of this function, the main method will have two boxes labeled x and y containing the values shown below:</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/main_x_y.png"></p>
+<p>When the function is invoked, the average function has its own scope with two new boxes labeled as a and b, and the bits are simply copied in. This copying of bits is what we refer to when we say “pass by value”.</p>
+<p><img src="https://joshhug.gitbooks.io/hug61b/content/chap2/fig21/average_a_b.png"></p>
+<p>If the average function were to change a, then x in main would be unchanged, since the GRoE tells us that we’d simply be filling in the box labeled a with new bits.</p>
+<h2 id="Test-Your-Understanding"><a href="#Test-Your-Understanding" class="headerlink" title="Test Your Understanding"></a>Test Your Understanding</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class PassByValueFigure &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">           Walrus walrus &#x3D; new Walrus(3500, 10.5);</span><br><span class="line">           int x &#x3D; 9;</span><br><span class="line"></span><br><span class="line">           doStuff(walrus, x);</span><br><span class="line">           System.out.println(walrus);</span><br><span class="line">           System.out.println(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void doStuff(Walrus W, int x) &#123;</span><br><span class="line">           W.weight &#x3D; W.weight - 100;</span><br><span class="line">           x &#x3D; x - 5;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Does the call to doStuff have an effect on walrus and/or x? Hint: We only need to know the GRoE to solve this problem.</p>
+<p>Answer: It will effect walrus but not on x. Walrus.weight will be changed to 3400, x will remain 9.</p>
+<h2 id="Instantiation-of-Arrays"><a href="#Instantiation-of-Arrays" class="headerlink" title="Instantiation of Arrays"></a>Instantiation of Arrays</h2><p>As mentioned above, variables that store arrays are reference variables just like any other. As an example, consider the declarations below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int[] x;</span><br><span class="line">Planet[] planets;</span><br></pre></td></tr></table></figure>
+<p>Both of these declarations create memory boxes of 64 bits. x can only hold the address of an int array, and planets can only hold the address of a Planet array.</p>
+<p>Instantiating an array is very similar to instantiating an object. For example, if we create an integer array of size 5 as shown below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; new int[](0,1,2,95,4)</span><br></pre></td></tr></table></figure>
+
+<p>Then the new keyword creates 5 boxes of 32 bits each and returns the address of the overall object for assignment to x.</p>
+<p>Objects can be lost if you lose the bits corresponding to the address. For example if the only copy of the address of a particular Walrus is stored in x, then x = null will cause you to permanently lose this Walrus. This isn’t necessarily a bad thing, since you’ll often decide you’re done with an object, and thus it’s safe to simply throw away the reference. We’ll see this when we build lists later in this chapter.</p>
+<h2 id="The-Law-of-the-Broken-Futon"><a href="#The-Law-of-the-Broken-Futon" class="headerlink" title="The Law of the Broken Futon"></a>The Law of the Broken Futon</h2><p>You might ask yourself why we spent so much time and space covering what seems like a triviality. This is probably especially true if you have prior Java experience. The reason is that it is very easy for a student to have a half-cocked understanding of this issue, allowing them to write code, but without true comprehension of what’s going on.</p>
+<p>While this might be fine in the short term, in the long term, doing problems without full understanding may doom you to failure later down the line. There’s a blog post about this so-called Law of the Broken Futon that you might find interesting.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://joshhug.gitbooks.io/hug61b/content/chap2/chap21.html">https://joshhug.gitbooks.io/hug61b/content/chap2/chap21.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/05/cs61b-note-Java-Part3-Lists/">Read All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Introduction-to-Computing-System-CIT593-Class-Note-Part1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -388,11 +580,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -493,11 +685,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cs61b</a>
         		</li>
       		
 		</ul>
@@ -874,11 +1066,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cs61b</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color1">cs61b</a>
               </li>
              
               <li class="article-tag-list-item">
