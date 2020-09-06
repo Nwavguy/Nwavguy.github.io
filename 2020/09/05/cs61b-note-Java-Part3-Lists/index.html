@@ -6,24 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Introduction to Computing System(CIT593) Class Note(Part1) | Hexo</title>
+  <title>cs61b note (Java Part3 Lists) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The machine modelThe basic model of a computer has 4 parts:  Arithmetic &amp; Logic Unit (ALU) Memory for Instructions Memory for data Program Counter (points to current line in our program)   Glossar">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Introduction to Computing System(CIT593) Class Note(Part1)">
-<meta property="og:url" content="http://yoursite.com/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="cs61b note (Java Part3 Lists)">
+<meta property="og:url" content="http://yoursite.com/2020/09/05/cs61b-note-Java-Part3-Lists/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="The machine modelThe basic model of a computer has 4 parts:  Arithmetic &amp; Logic Unit (ALU) Memory for Instructions Memory for data Program Counter (points to current line in our program)   Glossar">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/machinemodel.png">
-<meta property="og:image" content="http://yoursite.com/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/figure19.png">
-<meta property="article:published_time" content="2020-09-01T15:38:29.000Z">
-<meta property="article:modified_time" content="2020-09-01T17:30:05.126Z">
+<meta property="article:published_time" content="2020-09-05T22:43:14.000Z">
+<meta property="article:modified_time" content="2020-09-05T22:43:14.275Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Computer System">
-<meta property="article:tag" content="CIT 593">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/machinemodel.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -137,74 +130,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Introduction-to-Computing-System-CIT593-Class-Note-Part1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-cs61b-note-Java-Part3-Lists" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Introduction to Computing System(CIT593) Class Note(Part1)
+      cs61b note (Java Part3 Lists)
     </h1>
   
 
         
-        <a href="/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/" class="archive-article-date">
-  	<time datetime="2020-09-01T15:38:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-01</time>
+        <a href="/2020/09/05/cs61b-note-Java-Part3-Lists/" class="archive-article-date">
+  	<time datetime="2020-09-05T22:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="The-machine-model"><a href="#The-machine-model" class="headerlink" title="The machine model"></a>The machine model</h2><p>The basic model of a computer has 4 parts:</p>
-<ul>
-<li>Arithmetic &amp; Logic Unit (ALU)</li>
-<li>Memory for Instructions</li>
-<li>Memory for data</li>
-<li>Program Counter (points to current line in our program)</li>
-</ul>
-<p><img src="machinemodel.png" alt="A basic Model of a Computer"></p>
-<h2 id="Glossary"><a href="#Glossary" class="headerlink" title="Glossary"></a>Glossary</h2><ul>
-<li><strong>CPU(Central Processing Unit):</strong>  the “overworked clerk” performs simple tasks<br>(ADD/SUB/MUL/DIV/LOGIC). The task to perform is also known as an<br>“instruction.”</li>
-<li><strong>Memory:</strong> the clerk’s “desk drawers,” a.k.a. the clerk’s “memory.” Each drawer has a number, also known as an address.</li>
-<li><strong>Program Memory:</strong> contains instructions for the clerk and tells it what to do.</li>
-<li><strong>Data memory:</strong> contains data for the clerk to work on</li>
-<li><strong>Program Counter (PC):</strong> tells the clerk whcih program memory drawer to open up and execute.</li>
-</ul>
-<h2 id="Basic-Operation-of-a-CPU"><a href="#Basic-Operation-of-a-CPU" class="headerlink" title="Basic Operation of a CPU"></a>Basic Operation of a CPU</h2><ul>
-<li>Program Counter tells clerk which drawer to open up (fetching)</li>
-<li>Clerk examines instruction and performs operation (decoding and execution)</li>
-<li>stores result of instruction in data memory drawer</li>
-<li>Updates the program counter(PC)<ul>
-<li>PC = PC + 1; so we advance to next instruction upon repeat</li>
-<li>optionally: PC = some other value; if we wish to ‘jump’ around to another<br>part of our program.</li>
-</ul>
-</li>
-<li>Repeats this process unitil instructions are comlete</li>
-</ul>
-<h2 id="Important-Questions-in-this-course"><a href="#Important-Questions-in-this-course" class="headerlink" title="Important Questions in this course"></a>Important Questions in this course</h2><ul>
-<li>How precisely is information stored?</li>
-<li>How do we design circuits that perform operations like addition and subtraction</li>
-<li>How do we design a machine that can execute a sequence of instructions?</li>
-<li>How do we program such a machine?</li>
-</ul>
-<h2 id="Level-of-Transforming-How-do-we-get-the-electorns-to-do-the-work"><a href="#Level-of-Transforming-How-do-we-get-the-electorns-to-do-the-work" class="headerlink" title="Level of Transforming (How do we get the electorns to do the work? )"></a>Level of Transforming (How do we get the electorns to do the work? )</h2><p><img src="figure19.png"></p>
-<h3 id="The-ISA"><a href="#The-ISA" class="headerlink" title="The ISA"></a>The ISA</h3><p>The instruction set architecture(ISA): is the complete specification of the interface between programs that have been written and the underlying computer hardware that must carry out the work of thsoe programs.</p>
-<ul>
-<li>opcode: describe the operation</li>
-<li>operand: describe individual data values</li>
-<li>data type: a representation of an operand such that the computer can perorm operations on that represeentation.</li>
-</ul>
-<p>The number of opcodes, data types, and addressing modes specified by an ISA vary among different ISAs. The x86, the ISA used in the PC has more than 200 opcodes, more than a dozen data types, and more two dozon addressing modes.</p>
-<p>The ISA also specifies the number of unique locations that compreise the computer’s memory and the number of individual 0s and 1s taht anre contained in each location.</p>
-<p>Many ISAs are using today. The most widely known as x86. Other ISAs include ARM, POWER and APARC.</p>
-<p>The translation from a high-level language(such as C) to the ISA of the computer on which the program will execute(such as x86) is usually done by a translating program called a compiler.  To translate from a program written in C to the x86 ISA, one would need a C to x86 compiler. </p>
-<p>The transaltion from the unique assembly language of a computer to its ISA is done by an <em>assembler</em>. </p>
-<h3 id="THe-Microarchitecture"><a href="#THe-Microarchitecture" class="headerlink" title="THe Microarchitecture"></a>THe Microarchitecture</h3><p>The ISAs discussed in the previous lecture inlucding x86(Intel), the PowerPC(IBM and Motorora), and THUMB(ARM). Each has been implemented by many different microarchitectures. For example, the x86’s original implementation in 1979 was the 8086, followed by the 80286, 80386, and 80486 in the 1980s. More recently, in 2001, Intel introduced the Pentium IV microprocessor. Even more recently, in 2015, Intel introduced Skylake. Each of these x86 microprocessors has its own microarchitecture.<br>Each microarchitecture is an opportunity for computer designers to make differnt tradeoffs between the cost of microprocessor, the performance that the microprocessor will prodie, and the energy that is required to power the microprocessor. </p>
-<h3 id="The-Logic-Circuit"><a href="#The-Logic-Circuit" class="headerlink" title="The Logic Circuit"></a>The Logic Circuit</h3><p>The next step is to implement each element of the microarchitecture out of simple<br>logic circuits. Here also there are choices, as the logic designer decides how to<br>best make the tradeoffs between cost and performance. So, for example, even for<br>an operation as simple as addition, there are several choices of logic circuits to<br>perform the operation at differing speeds and corresponding costs.</p>
-<h3 id="The-devise"><a href="#The-devise" class="headerlink" title="The devise"></a>The devise</h3><p>Finally, each basic logic circuit is implemented in accordance with the requirements of the particular device technology used. So, CMOS circuits are different from NMOS circuits, which are different, in turn, from gallium arsenide<br>circuits.</p>
-
+        
       
 
       
@@ -212,21 +158,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Computer System</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CIT 593</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -277,7 +208,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/05/cs61b-note-Java-Part3-Lists/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +222,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/09/05/cs61b-note-Java-Part3-Lists/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          cs61b note (Java Part3 Lists)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/08/30/cs61b-note-Java-Part2-Objects/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cs61b note (Java Part2 Objects)</div>
+    <a href="/2020/09/01/Introduction-to-Computing-System-CIT593-Class-Note-Part1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Introduction to Computing System(CIT593) Class Note(Part1)</div>
       <i class="icon-circle-right"></i>
     </a>
   
